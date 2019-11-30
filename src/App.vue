@@ -1,17 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="mt-0" id="app">
+    <Navbar />
+    <p>{{title}}</p>
+    <AllFriends  :friends="friends" @delete="deleteFriend"/>
+    <OnlineFriends :friends="friends" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Navbar from './components/Navbar'
+import AllFriends from './components/AllFriends'
+import OnlineFriends from './components/OnlineFriends'
+
 
 export default {
   name: 'app',
+  data(){
+    return {
+      title:'My First App',
+      friends: [
+                {name: 'Marios', online: true},
+                {name: 'Ifeanyi', online: false},
+                {name: 'Samsom', online: true},
+                {name: 'Musty', online: false}
+            ]
+    }
+  },
   components: {
-    HelloWorld
+    Navbar,
+    AllFriends,
+    OnlineFriends
+  },
+  methods:{
+    deleteFriend(payload){
+      console.log(payload)
+      this.friends = this.friends.filter(friend => {
+       return friend.name !== payload.name
+      })
+    }
   }
 }
 </script>
