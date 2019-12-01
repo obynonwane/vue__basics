@@ -2,7 +2,7 @@
     <div>
         <h1>Blogs</h1>
         <div class="container">
-            <input type="text" v-model="searchTerm">
+            <input type="text"  class="form-control" v-model="searchTerm">
 
             <table class="table">
             <thead>
@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="post in posts" :key="post.id">
+                <tr v-for="post in filteredPosts" :key="post.id">
                 <th scope="row">{{post.id}}</th>
                 <td>{{post.body | snippet}}</td>
                 <td>{{post.title}}</td>
@@ -38,7 +38,7 @@ export default {
     },
     computed: {
         filteredPosts(){
-            return this.post.filter(post => {
+            return this.posts.filter(post => {
                 return post.title.match(this.searchTerm)
             })
         }
