@@ -2,6 +2,7 @@
   <div class="mt-0" id="app">
     <Navbar />
     <p>{{title}}</p>
+    <router-view />
     <AllFriends  :friends="friends" @delete="deleteFriend"/>
     <OnlineFriends :friends="friends" />
     <Blogs />
