@@ -6,6 +6,12 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 
+Vue.filter('snippet', val => {
+  if(!val || typeof(val) != 'string') return ''
+  val = val.slice(0,50)
+  return val
+})
+
 
 Vue.config.productionTip = false
 

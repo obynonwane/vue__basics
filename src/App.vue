@@ -4,11 +4,12 @@
     <p>{{title}}</p>
     <AllFriends  :friends="friends" @delete="deleteFriend"/>
     <OnlineFriends :friends="friends" />
+    <Blogs />
   </div>
 </template>
 
 <script>
-
+import Blogs from './components/Blogs'
 import Navbar from './components/Navbar'
 import AllFriends from './components/AllFriends'
 import OnlineFriends from './components/OnlineFriends'
@@ -30,7 +31,8 @@ export default {
   components: {
     Navbar,
     AllFriends,
-    OnlineFriends
+    OnlineFriends,
+    Blogs
   },
   methods:{
     deleteFriend(payload){
